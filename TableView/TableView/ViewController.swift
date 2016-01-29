@@ -14,13 +14,12 @@ class ViewController: UITableViewController {
         
         //  Normally, a cell’s height is determined by the table view delegate’s tableView:heightForRowAtIndexPath: method. To enable self-sizing table view cells, you must set the table view’s rowHeight property to UITableViewAutomaticDimension. You must also assign a value to the estimatedRowHeight property. As soon as both of these properties are set, the system uses Auto Layout to calculate the row’s actual height.
         tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.rowHeight = UITableViewAutomaticDimension
         
         let blurEffect = UIBlurEffect(style: .Dark)
         let vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
         
         let enableVibrancy = true
-        
         if enableVibrancy {
             tableView.separatorEffect = vibrancyEffect
         } else {
@@ -40,7 +39,7 @@ class ViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomCell
         cell.label.text = "Cell \(indexPath.row)"
-        cell.label.font = cell.label.font.fontWithSize(CGFloat(indexPath.row)*4.0)
+        cell.label.font = cell.label.font.fontWithSize(CGFloat(indexPath.row+1)*4.0)
         if indexPath.row % 2 == 0 {
             cell.contentView.backgroundColor = UIColor.lightGrayColor()
         } else {
